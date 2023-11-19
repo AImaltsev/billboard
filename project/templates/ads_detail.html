@@ -1,5 +1,12 @@
 {% extends "default.html" %}
 
 {% block content %}
-<h1>Одно объявление конкретное</h1>
+  <h1>{{ ads_detail.title }}</h1>
+  <p>Author: {{ ads_detail.author }}</p>
+  <p>Text: {{ ads_detail.text }}</p>
+  <p>Просмотры: {{ ads_detail.views }}</p>
+  <p>Категория: {{ ads_detail.category }}</p>
+  <p>Дата создания: {{ ads_detail.date_create }}</p>
+  <p>Статус: {{ ads_detail.status }}</p>
+  <!-- Добавьте другие поля объявления по мере необходимости -->
 {% endblock %}

@@ -10,4 +10,5 @@ urlpatterns = [
     path('adsprivate/', AdPrivatePage.as_view(), name='adsprivate'),
     path('adsprivate/<int:pk>/', AdPrivateDetail.as_view(), name='adprivatedetail'),
     path('adlike/', AdLike.as_view(), name='adlike'),
+    path('create_ad/', create_ad, name='create_ad'),
 ]

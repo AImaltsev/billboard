@@ -1,0 +1,10 @@
+{% extends 'default.html' %}
+
+{% block content %}
+  <h2>Create an Ad</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Create Ad</button>
+  </form>
+{% endblock %}

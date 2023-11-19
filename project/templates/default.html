@@ -11,6 +11,7 @@
     {% if user.is_authenticated %}
         <p>Привет {{ user.username }}!</p>
     <p><a href="{% url 'account_logout' %}">Выйти</a></p>
+    <p><a href="{% url 'create_ad' %}">Разместить объявление</a></p>
     {% else %}
         <p>Войдите в учётную запись</p>
         <a href="{% url 'account_login' %}">Войти</a>
