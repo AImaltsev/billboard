@@ -10,10 +10,10 @@
 <body>
     {% if user.is_authenticated %}
         <p>Привет {{ user.username }}!</p>
-    <p><a href="{% url 'logout' %}">Выйти</a></p>
+    <p><a href="{% url 'account_logout' %}">Выйти</a></p>
     {% else %}
         <p>Войдите в учётную запись</p>
-        <a href="{% url 'login' %}">Войти</a>
+        <a href="{% url 'account_login' %}">Войти</a>
 
     {% endif %}
     <ul>

@@ -3,12 +3,14 @@ from django.urls import reverse_lazy
 from django.views import generic
 from .forms import CustomUserCreationForm
 from django.contrib import messages
+from allauth.account.views import SignupView
+from allauth.account.views import LoginView
 
-class SignUpView(generic.CreateView):
-    form_class = CustomUserCreationForm  # Замените на новую форму
-    success_url = reverse_lazy('login')
+class SignUpView(SignupView):
     template_name = 'signup.html'
+    form_class = CustomUserCreationForm  # ваша форма
 
-    def form_invalid(self, form):
-        messages.error(self.request, 'There was an error with your registration. Please check the form and try again.')
-        return super().form_invalid(form)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['key'] = self.request.session.get('allauth_signup', None)
+        return context

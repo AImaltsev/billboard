@@ -1,8 +1,8 @@
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 from .views import *
 
 urlpatterns = [
+    path('', index, name='index'),
     path('news/', NewsListView.as_view(), name='news'),
     path('news/<int:pk>/', NewsDetail.as_view(), name='news_detail'),
     path('ads/', Ads.as_view(), name='ads'),
