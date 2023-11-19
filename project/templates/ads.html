@@ -2,4 +2,37 @@
 
 {% block content %}
 <h1>Объявления</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Text</th>
+      <th>Categories</th>
+      <th>Date Created</th>
+      <th>Author</th>
+      <th>Views</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for ad in ads %}
+      <tr>
+        <td>
+          <a href="{% url 'ads_detail' ad.id %}">{{ ad.title }}</a>
+        </td>
+        <td>{{ ad.text|truncatewords:20 }}</td>
+        <td>
+          {% for category in ad.category.all %}
+            {{ category.title }}
+            {% if not forloop.last %}, {% endif %}
+          {% endfor %}
+        </td>
+        <td>{{ ad.date_create }}</td>
+        <td>{{ ad.author }}</td>
+        <td>{{ ad.views }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
 {% endblock %}
