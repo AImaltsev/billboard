@@ -1,0 +1,5 @@
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = '465'
+EMAIL_HOST_USER = 'boomer47'
+EMAIL_HOST_PASSWORD = 'fider2020'
+EMAIL_USE_TLS = True
