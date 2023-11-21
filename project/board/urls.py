@@ -1,5 +1,6 @@
 from django.urls import path
 from .views import *
+from . import views
 
 urlpatterns = [
     path('', index, name='index'),
@@ -16,5 +17,5 @@ urlpatterns = [
     path('accept_response/<int:ad_id>/<int:response_id>/', accept_response, name='accept_response'),
     path('reject_response/<int:ad_id>/<int:response_id>/', reject_response, name='reject_response'),
     path('adsprivate/<int:pk>/delete_response/<int:response_id>/', delete_response, name='delete_response'),
-
+    path('send_notification/<int:news_id>/', send_news_notification, name='send_news_notification'),
 ]

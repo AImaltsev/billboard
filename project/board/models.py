@@ -61,3 +61,6 @@ class Response(models.Model):
         return f'Response from {self.sender.username} to Ad #{self.ad.id}'
 
 
+
+
+

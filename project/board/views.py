@@ -1,11 +1,14 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, DetailView
 from .models import News, Ad, LikePage, Category, Response
-from .forms import AdForm, ResponseForm
+from .forms import AdForm, ResponseForm, NewsForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
+from django.contrib.auth.models import User
+from django.urls import reverse
 
 def my_view(request):
     DEFAULT_FROM_EMAIL = settings.DEFAULT_FROM_EMAIL
@@ -194,3 +197,20 @@ def delete_response(request, pk, response_id):
         messages.success(request, 'Отклик успешно удален.')
 
     return redirect('ad_private_detail', pk=pk)
+
+
+def send_news_notification(request, news_id):
+    news = get_object_or_404(News, pk=news_id)
+
+    users = User.objects.all()
+
+    for user in users:
+        subject = f'Уведомление: {news.title}'
+        message = f'Привет, {user.username}!\n\n' \
+                  f'Новая новость: {news.title}\n\n' \
+                  f'{news.text}\n\n' \
+                  f'С уважением,\nВаш билборд'
+
+        send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user.email])
+
+    return redirect(reverse('news_detail', args=[news_id]))

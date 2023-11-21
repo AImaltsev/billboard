@@ -20,7 +20,7 @@
           <td>
             <a href="{% url 'ads_detail' ad.id %}">{{ ad.title }}</a>
           </td>
-          <td>{{ ad.text|truncatewords:20|safe }}</td>
+          <td>{{ ad.text|striptags|truncatewords:20|safe }}</td>
           <td>
             {% for category in categories %}
               {{ category.title }}
