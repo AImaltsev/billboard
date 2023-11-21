@@ -1,7 +1,13 @@
 from django import forms
-from .models import Ad
+from .models import Ad,Response
 
 class AdForm(forms.ModelForm):
     class Meta:
         model = Ad
         fields = ['title', 'text', 'category', 'status']
+
+
+class ResponseForm(forms.ModelForm):
+    class Meta:
+        model = Response
+        fields = ['text']

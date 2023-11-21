@@ -149,9 +149,26 @@ try:
 except ImportError:
     print('Email settings import failed')
 
+
+DEFAULT_FROM_EMAIL = 'boomer47.am@gmail.com'
+
 AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 SITE_ID = 1
 
+TINYMCE_DEFAULT_CONFIG = {
+    'height': 360,
+    'width': 960,
+    'menubar': True,
+    'plugins': [
+        "advlist autolink lists link image charmap print preview anchor",
+        "searchreplace visualblocks code fullscreen",
+        "insertdatetime media table paste code help wordcount",
+    ],
+    'toolbar': 'undo redo | formatselect | ' \
+               'bold italic backcolor | alignleft aligncenter ' \
+               'alignright alignjustify | bullist numlist outdent indent | ' \
+               'removeformat | help | image',
+}
